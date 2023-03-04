@@ -2,10 +2,6 @@
 
 print("cmp-sharp-sense plugin")
 
-local currnetFilePath = vim.api.nvim_buf_get_name(0)
-
-print(currnetFilePath)
-
 -- TODO Here I need to append my Rust program
 -- vim.opt.runtimepath:append("~/Documents/projects/nvim-sharp-sense/target/release")
 
@@ -30,25 +26,29 @@ cmp.event:on("complete_done", function(value)
   if completion_item and completion_item.is_csharp_snip then
     -- local sharp_sense = require "main_foo"
     local currnetFilePath = vim.api.nvim_buf_get_name(0)
+    local bufNumber = vim.api.nvim_get_current_buf();
+
+    vim.api.nvim_buf_set_lines(bufNumber, 0, 0, false, { "//This is sooo coool", completion_item.namespace });
 
     vim.cmd(':w')
-    sharp_sense.import(completion_item, currnetFilePath)
 
-    local timer = vim.loop.new_timer()
+    -- sharp_sense.import(completion_item, currnetFilePath)
 
-    timer:start(300, 0, vim.schedule_wrap(function()
-      --Refresh page
-      vim.cmd(':e!')
-      --Jump on line down
-      vim.cmd('norm! j')
-      -- vim.cmd('norm! l')
-      -- vim.cmd(vim.api.nvim_replace_termcodes('norm! <Esc>', true, true, true))
-      vim.api.nvim_command('startinsert!')
-      -- vim.cmd(vim.api.nvim_replace_termcodes('norm! <S-$>', true, true, true))
-      -- vim.cmd('norm! a')
-    end))
+    -- local timer = vim.loop.new_timer()
 
-    print('Should have import')
+    -- timer:start(300, 0, vim.schedule_wrap(function()
+    --   --Refresh page
+    --   vim.cmd(':e!')
+    --   --Jump on line down
+    --   vim.cmd('norm! j')
+    --   -- vim.cmd('norm! l')
+    --   -- vim.cmd(vim.api.nvim_replace_termcodes('norm! <Esc>', true, true, true))
+    --   vim.api.nvim_command('startinsert!')
+    --   -- vim.cmd(vim.api.nvim_replace_termcodes('norm! <S-$>', true, true, true))
+    --   -- vim.cmd('norm! a')
+    -- end))
+
+    print('Should have import, this is new' .. bufNumber)
   end
 
   -- print(vim.inspect(completion_item));
