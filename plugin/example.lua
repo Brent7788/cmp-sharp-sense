@@ -8,69 +8,69 @@ print("cmp-sharp-sense plugin")
 local cmp = require 'cmp'
 local sharp_sense = nil;
 
-cmp.event:on("complete_done", function(value)
-  print("His this working")
+-- cmp.event:on("complete_done", function(value)
+--   print("His this working")
 
-  if sharp_sense == nil then
-    return
-  end
+--   if sharp_sense == nil then
+--     return
+--   end
 
-  local active_entry = value.entry
+--   local active_entry = value.entry
 
-  if active_entry == nil then
-    return
-  end
+--   if active_entry == nil then
+--     return
+--   end
 
-  local completion_item = active_entry.completion_item
+--   local completion_item = active_entry.completion_item
 
-  if completion_item and completion_item.is_csharp_snip then
-    -- local sharp_sense = require "main_foo"
-    local currnetFilePath = vim.api.nvim_buf_get_name(0)
-    local bufNumber = vim.api.nvim_get_current_buf();
+--   if completion_item and completion_item.is_csharp_snip then
+--     -- local sharp_sense = require "main_foo"
+--     local currnetFilePath = vim.api.nvim_buf_get_name(0)
+--     local bufNumber = vim.api.nvim_get_current_buf();
 
-    print("Item: ", vim.inspect(completion_item))
+--     print("Item: ", vim.inspect(completion_item))
 
-    vim.api.nvim_buf_set_lines(bufNumber, 0, 0, false, { "//This is sooo coool", completion_item.namespace });
+--     vim.api.nvim_buf_set_lines(bufNumber, 0, 0, false, { "//This is sooo coool", completion_item.namespace });
 
-    -- vim.cmd(':w')
+--     -- vim.cmd(':w')
 
-    -- sharp_sense.import(completion_item, currnetFilePath)
+--     -- sharp_sense.import(completion_item, currnetFilePath)
 
-    -- local timer = vim.loop.new_timer()
+--     -- local timer = vim.loop.new_timer()
 
-    -- timer:start(300, 0, vim.schedule_wrap(function()
-    --   --Refresh page
-    --   vim.cmd(':e!')
-    --   --Jump on line down
-    --   vim.cmd('norm! j')
-    --   -- vim.cmd('norm! l')
-    --   -- vim.cmd(vim.api.nvim_replace_termcodes('norm! <Esc>', true, true, true))
-    --   vim.api.nvim_command('startinsert!')
-    --   -- vim.cmd(vim.api.nvim_replace_termcodes('norm! <S-$>', true, true, true))
-    --   -- vim.cmd('norm! a')
-    -- end))
+--     -- timer:start(300, 0, vim.schedule_wrap(function()
+--     --   --Refresh page
+--     --   vim.cmd(':e!')
+--     --   --Jump on line down
+--     --   vim.cmd('norm! j')
+--     --   -- vim.cmd('norm! l')
+--     --   -- vim.cmd(vim.api.nvim_replace_termcodes('norm! <Esc>', true, true, true))
+--     --   vim.api.nvim_command('startinsert!')
+--     --   -- vim.cmd(vim.api.nvim_replace_termcodes('norm! <S-$>', true, true, true))
+--     --   -- vim.cmd('norm! a')
+--     -- end))
 
-    print('Should have import, this is new' .. bufNumber)
-  end
+--     print('Should have import, this is new' .. bufNumber)
+--   end
 
-  -- print(vim.inspect(completion_item));
+--   -- print(vim.inspect(completion_item));
 
-  -- -- local log = vim.inspect(cmp.get_active_entry())
-  -- -- local log = cmp.get_active_entry()
+--   -- -- local log = vim.inspect(cmp.get_active_entry())
+--   -- -- local log = cmp.get_active_entry()
 
-  -- local currnetFilePath = vim.api.nvim_buf_get_name(0)
-  -- print(currnetFilePath)
+--   -- local currnetFilePath = vim.api.nvim_buf_get_name(0)
+--   -- print(currnetFilePath)
 
-  -- print(vim.inspect(log.completion_item));
-  -- -- print(log.completion_item.data.uri)
-  -- print(log.completion_item.label)
+--   -- print(vim.inspect(log.completion_item));
+--   -- -- print(log.completion_item.data.uri)
+--   -- print(log.completion_item.label)
 
-  --TODO Find a way to convert lua table to json string
-  -- local filepath = HOME .. "/Downloads/testlog.txt"
-  -- local lines = { log }
+--   --TODO Find a way to convert lua table to json string
+--   -- local filepath = HOME .. "/Downloads/testlog.txt"
+--   -- local lines = { log }
 
-  -- vim.api.nvim_call_function("writefile", { lines, filepath })
-end)
+--   -- vim.api.nvim_call_function("writefile", { lines, filepath })
+-- end)
 
 local source = {}
 
