@@ -28,9 +28,11 @@ cmp.event:on("complete_done", function(value)
     local currnetFilePath = vim.api.nvim_buf_get_name(0)
     local bufNumber = vim.api.nvim_get_current_buf();
 
+    print("Item: ", vim.inspect(completion_item))
+
     vim.api.nvim_buf_set_lines(bufNumber, 0, 0, false, { "//This is sooo coool", completion_item.namespace });
 
-    vim.cmd(':w')
+    -- vim.cmd(':w')
 
     -- sharp_sense.import(completion_item, currnetFilePath)
 
